@@ -1,0 +1,10 @@
+version: "3.6"
+services:
+  code-server-go:
+    image: leonardopc/code-server-go
+    container_name: code-server-go
+    volumes:
+      - ${USERDIR}/docker/code-server-go:/config
+      - ${USERDIR}/docker/dev:/workspaces/dev
+    restart: unless-stopped
+
