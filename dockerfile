@@ -1,9 +1,9 @@
-FROM golang:1.18.0-bullseye AS go
+FROM golang:1.18.1-bullseye AS go
 
 FROM debian:bullseye-slim
 # set version label
 LABEL maintainer="leonardopc"
-LABEL build_version="code-server 4.2.0 golang 1.18 bullseye"
+LABEL build_version="code-server 4.3.0 golang 1.18.1 bullseye"
 # environment settings
 #ENV HOME="/config"
 # add go binaries
@@ -33,7 +33,9 @@ echo "**** install code-server ****" && \
     "https://github.com/coder/code-server/releases/download/v${CODE_RELEASE}/code-server-${CODE_RELEASE}-linux-amd64.tar.gz" && \
   tar xf /tmp/code-server.tar.gz -C \
     /app/code-server --strip-components=1 && \
-  echo "**** clean up ****" && \
+echo "**** installing docker cli ****" && \
+  curl -fsSL https://get.docker.com | bash - && \
+echo "**** clean up ****" && \
   apt-get purge --auto-remove -y \
     nodejs && \
   apt-get clean && \
