@@ -1,9 +1,9 @@
-FROM golang:1.18.1-bullseye AS go
+FROM golang:1.18.2-bullseye AS go
 
 FROM debian:bullseye-slim
 # set version label
 LABEL maintainer="leonardopc"
-LABEL build_version="code-server 4.3.0 golang 1.18.1 bullseye"
+LABEL build_version="code-server 4.4.0 golang 1.18.2 bullseye"
 # environment settings
 #ENV HOME="/config"
 # add go binaries
